@@ -1,31 +1,81 @@
 const containerDiv = document.getElementById('container')
 
-// const linkedList = () => {
-//    return {
-//     head: null,
-//     // add new node to end of list
-//     append: append = (value) => {
-//         const newNode = node(value)
-//         if (head === null) head = newNode
-//         else {
-//             const tail = head
-//             while (next != null) tail = next
-//         }
-//         next = newNode
-//     },
+const node = (value = null, next = null) => {
+    return {
+        value: value,
+        next: next,
+    }
+}
 
-//     }
-// }
+const linkedList = () => {
+   return {
+    head: null,
+    size: size = 0,
 
-// linkedList()
+    // add new node to end of list
+    append: append = (value) => {
+        const lastNode = node(value)
+        if (!head) head = lastNode
+        else {
+            const tail = head
+            while (node.next != null) tail = node.next
+        }
+
+        next = lastNode
+        size++
+    },
+
+    prepend: prepend = (value) => {
+        const firstNode = node(value)
+        head = firstNode
+        size++
+    },
+
+    insertAt: insertAt = (value, index) => {
+        if (index > 0 && index > size) return append(value)
+        if (index === 0) return prepend(value)
+
+        const newNode = node(value)
+        let current, previous
+        current = head
+        let count = 0
+        while (count < index) {
+            previous = current
+            count++
+            current = next        
+        }
+
+        newNode = current
+        previous = newNode
+        size++
+    },
+
+  printListValue: printListValue = () => {
+    let current = head
+        let dataList = []
+        while(current) {
+            console.log(current.value)
+            dataList.push(`${current.value} -> `)
+            
+            current = node.next
+            if (!current) {
+                dataList.push('null')
+            }
+        }
+        console.log(dataList)
+  } 
+
+    }
+}
+
+const myList = linkedList()
+myList.prepend(100)
+myList.append(200)
+
+myList.printListValue()
 
 
-// const node = (value = null, next = null) => {
-//     return {
-//         value: value,
-//         next: next,
-//     }
-// }
+
 
 class Node {
     constructor(data, next = null) {
@@ -195,19 +245,19 @@ class LinkedList {
     }
 }
 
-const ll = new LinkedList()
+// const ll = new LinkedList()
 
-ll.insertFirst(100)
-ll.insertFirst(200)
-ll.insertFirst(300)
-ll.insertLast(400)
-ll.insesrtAt(500, 10)
+// ll.insertFirst(100)
+// ll.insertFirst(200)
+// ll.insertFirst(300)
+// ll.insertLast(400)
+// ll.insesrtAt(500, 10)
 
-ll.getAt(5)
-// ll.isSame(500)
-console.log(ll.getData(500))
-// ll.removeLast()
+// ll.getAt(5)
+// // ll.isSame(500)
+// console.log(ll.getData(500))
+// // ll.removeLast()
 
-// ll.removeAt(4)
-// ll.clearList()
-ll.printListData()
+// // ll.removeAt(4)
+// // ll.clearList()
+// ll.printListData()
