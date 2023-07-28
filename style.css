@@ -3,3 +3,20 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.listItem {
+    border: solid black 1px;
+    width: fit-content;
+    height: 50px;
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    padding: 5px;
+}

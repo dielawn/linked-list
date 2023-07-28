@@ -143,23 +143,44 @@ const linkedList = () => {
         let dataList = [];
   
         while (current) {
-          console.log(current.value);
-          dataList.push(`${current.value} -> `);
+          console.log(current.value)
+          dataList.push(`${current.value} -> `)
   
-          current = current.next;
+          current = current.next
           if (!current) {
-            dataList.push('null');
+            dataList.push('null')
           }
         }
   
-        console.log(dataList.join(''));
+        console.log(dataList.join(''))
       },
+    
+    renderListValueAndId() {
+        let current = this.head;
+
+        while (current) {
+            const listItem = document.createElement('div')
+            listItem.classList.add('listItem')
+            listItem.innerHTML = `${current.value} --> `
+            
+            current = current.next
+            if (!current) {
+                listItem.innerHTML = 'null'
+            }
+
+        containerDiv.appendChild(listItem)
+        
+       
+        }
+
+    },
 
     }
 }
 
 const myList = linkedList()
-const fullList = [
+
+
 myList.append(100),
 myList.append(200),
 myList.append(300),
@@ -168,9 +189,20 @@ myList.append(500),
 myList.append(600),
 myList.append(800),
 myList.prepend(50),
-]
+myList.insertAt(150, 2),
+delayFunctionCall()
 
-myList.insertAt(150, 2)
+
+
+function delayFunctionCall() {
+    setTimeout(() => {
+      myList.append(900)
+      myList.renderListValueAndId()
+    }, 1500)
+  }
+  
+
+
 // myList.removeAt(2)
 console.log('getting index 2', myList.getAt(2))
 // myList.removeLast()
