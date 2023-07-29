@@ -155,23 +155,6 @@ const linkedList = () => {
         console.log(dataList.join(''))
       },
     
-    renderListValueAndId() {
-        let current = this.head
-
-        while (current) {
-            const listItem = document.createElement('div')
-            listItem.classList.add('listItem')
-            listItem.innerHTML = `${current.value} --> `
-            
-            current = current.next
-            if (!current) {
-                listItem.innerHTML = 'null'
-            }
-
-        containerDiv.appendChild(listItem)
-        }
-    },
-    
     async delayElementRender() {
 
         let current = this.head
@@ -195,7 +178,15 @@ const linkedList = () => {
             }
           
         }     
-   }
+   },
+
+   isReady(boolean) {
+    if (boolean) return true
+    else return false
+   },
+
+  
+
    }
 }    
 
@@ -212,6 +203,7 @@ const myList = linkedList()
     myList.prepend(50),
     myList.insertAt(150, 2),
     myList.insertAt(700, 8)
+    
     myList.append(900)
 
 
@@ -227,8 +219,7 @@ myList.getIndex(600)
 myList.remove(500)
 myList.printListValue()
 
-myList.delayElementRender(myList)
-
+// myList.delayElementRender(myList)
 
 
 class Node {
@@ -304,7 +295,7 @@ class LinkedList {
             current = current.next
         }
 
-        return
+        return current
     }
 
  
