@@ -156,7 +156,7 @@ const linkedList = () => {
       },
     
     renderListValueAndId() {
-        let current = this.head;
+        let current = this.head
 
         while (current) {
             const listItem = document.createElement('div')
@@ -169,38 +169,54 @@ const linkedList = () => {
             }
 
         containerDiv.appendChild(listItem)
-        
-       
         }
-
     },
+    
+    async delayElementRender() {
 
-    }
-}
+        let current = this.head
+        while (current) {
+            
+            const listItem = document.createElement('p')
+            listItem.classList.add('listItem')
+            listItem.innerHTML = `${current.value} --> `           
+            containerDiv.appendChild(listItem)
+
+            await new Promise((resolve) => setTimeout(resolve, 1000))
+
+            current = current.next
+
+            if (current === null) {
+
+                const nullItem = document.createElement('p')
+                nullItem.classList.add('listItem')
+                nullItem.innerHTML = 'null'
+                containerDiv.appendChild(nullItem)
+            }
+          
+        }     
+   }
+   }
+}    
 
 const myList = linkedList()
 
+    
+    myList.append(100),
+    myList.append(200),
+    myList.append(300),
+    myList.append(400),
+    myList.append(500),
+    myList.append(600),
+    myList.append(800),
+    myList.prepend(50),
+    myList.insertAt(150, 2),
+    myList.insertAt(700, 8)
+    myList.append(900)
 
-myList.append(100),
-myList.append(200),
-myList.append(300),
-myList.append(400),
-myList.append(500),
-myList.append(600),
-myList.append(800),
-myList.prepend(50),
-myList.insertAt(150, 2),
-delayFunctionCall()
 
 
 
-function delayFunctionCall() {
-    setTimeout(() => {
-      myList.append(900)
-      myList.renderListValueAndId()
-    }, 1500)
-  }
-  
 
 
 // myList.removeAt(2)
@@ -211,7 +227,7 @@ myList.getIndex(600)
 myList.remove(500)
 myList.printListValue()
 
-
+myList.delayElementRender(myList)
 
 
 
